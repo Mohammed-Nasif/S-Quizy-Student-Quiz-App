@@ -34,7 +34,7 @@ To use this project, first clone the repo on your device using the command below
 - After The Installation you can now open it on any Code Text Editor (VS Code).
 
 - You Must First Run the `npm install` in VS Terminal Using in Project File Directions `[Main Dir, Server Dir and Client Dir]` To Install All Required Packages.
-
+    *You can use ``npm run install-all`` In Main Dir Only and All Packages Will Be installed At One time.*
 - Then You Can Run the Project Using `npm start` in VS Terminal Using in Main Project File Direction To Go Live With The Project.
     *You can use ``npm start`` In Server Dir and Client Dir to run the each one separatly.*
 - Back-End Runs On LocalHost Port 8080.
