@@ -1,0 +1,39 @@
+const express = require('express');
+const app = express();
+const PORT = 8080;
+const { getWordsArray, getStudentRank } = require('./TestData_model');
+
+// Cors for cross origin allowance
+const cors = require('cors');
+
+//Enable Cors Requests
+app.use(cors());
+
+/* Dependencies */
+const bodyParser = require('body-parser');
+
+/* Middleware*/
+//configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Run Server On LocalHost Port 8080
+app.listen(PORT, () => console.log(`\u001b[1;32mServer Running On \u001b[1;34mhttp://localhost:${PORT}/`));
+
+app.get('/', (_req: any, res: { send: (arg0: string) => void }) => {
+	res.send(`<div style="display:flex; flex-direction:column; align-items:center; position: absolute; top: 10%; left: 50%; transform: translateX(-50%); background-color: #DDD; width:60%;padding: 10px; border: 2px solid black;"><h1>Welcome To S-Quizy Endpoints Home Page</h1>
+			<h4>You can use this API To Test The S-Quizy App by using the following Endpoints : </br> </br> <a href="http://localhost:8080/words">/words</a></h4>
+			</div>`);
+});
+
+// Words EndPoint
+app.get('/words', (_req: any, res: { send: (arg0: any) => void }) => {
+	console.log(_req);
+	res.send(getWordsArray(10));
+});
+
+// Rank EndPoint
+app.post('/rank', (req: { body: { score: any } }, res: { send: (arg0: any) => void }) => {
+	const studentScore = req.body.score;
+	res.send(getStudentRank(studentScore));
+});

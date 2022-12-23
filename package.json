@@ -1,0 +1,16 @@
+{
+	"name": "y",
+	"version": "1.0.0",
+	"description": "Student Quiz App",
+	"main": "index.js",
+	"scripts": {
+		"start": "concurrently --kill-others \"npm run start-server\" \"npm run start-client\"",
+		"start-server": "cd server && npm start",
+		"start-client": "cd client && npm start"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^7.6.0"
+	}
+}
