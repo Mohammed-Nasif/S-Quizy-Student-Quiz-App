@@ -45,6 +45,9 @@ OR
 
 - Now you can open the Project on any browser using the localhost of Port: 8000. [http://localhost:8000/]
 
+ **If you faced an issue like error: ```child compilation failed module.createrequire is not a function``` you need to check your node version installed on the machine , The Project Was Developed on Machine with Node Version ``v16.14.0`` So i recommend to update to it.**
+ - For Further Solutions you can check: [Another Solutions](https://stackoverflow.com/questions/70390777/error-in-module-createrequire-is-not-a-function)
+
 # Technologies
 [Back To Top ⬆️](#table-of-contents)
 
