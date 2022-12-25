@@ -28,8 +28,7 @@ app.get('/', (_req: any, res: { send: (arg0: string) => void }) => {
 
 // Words EndPoint
 app.get('/words', (_req: any, res: { send: (arg0: any) => void }) => {
-	console.log(_req);
-	res.send(getWordsArray(10));
+	res.send(getWordsArray(10)); // You Can Change 10 To Any Required Number Of Words [It's 10 By Defalut In Model Function]
 });
 
 // Rank EndPoint

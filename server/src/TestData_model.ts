@@ -1,10 +1,13 @@
 const { readFileSync } = require('fs');
 
+
+
 // Helper Function To Get Random Index From Array According To It's Length
 const getRandomIndex = (arrayLength: number) => Math.floor(Math.random() * arrayLength);
 
+
 // Function To Handle Randomize Of Words Data
-const getWordsArray = (reqArrayLen: number) => {
+const getWordsArray = (reqArrayLen: number = 10) => {
 	// Get WordsList From TestData JSON FILE
 	const allWords = JSON.parse(readFileSync('./db/TestData.json'))['wordList'];
 
@@ -30,14 +33,22 @@ const getWordsArray = (reqArrayLen: number) => {
 
 	// Loop Over The WordsList To Get Another Random Words To Complete All 10 Words Needed In Our Case
 	for (let i = 0; remainingWords.length < reqArrayLen - 4; i++) {
+		// Cause Of This set.has() method The Whole Loop Now Is O(N) Time.Complexity
 		if (alreadyIncludedWords.has(allWords[i].word)) continue;
 		remainingWords.push(allWords[i]);
 	}
 
-	const response = JSON.stringify([...remainingWords, ...mustIncluded]);
+	/*
+		• Cause Of The Small Amount Of Data, Shuffle Again On The Array Is A Good Option 
+		To Ensure The Randomization Of Words In Every Request
+	*/
+	const shuffledWords = [...remainingWords, ...mustIncluded].sort(() => 0.5 - Math.random());
+
+	const response = JSON.stringify(shuffledWords);
 
 	return JSON.parse(response);
 };
+
 
 // Function To Handle The Rank Calculation Of Student
 const getStudentRank = (score: number) => {
@@ -45,7 +56,7 @@ const getStudentRank = (score: number) => {
 	const allScores = JSON.parse(readFileSync('./db/TestData.json'))['scoresList'];
 
 	const totalScores = allScores.length;
-	let belowStudentScore = 0;
+	let belowStudentScore = 0; // Number Of Scores Below The Current Student Score
 
 	allScores.forEach((s: number) => {
 		if (s < score) belowStudentScore++;
