@@ -19,7 +19,6 @@ export const ChoicesButtonsWrapper: FC<{
 
 	const choicesOptions = ['noun', 'adverb', 'adjective', 'verb'];
 
-
 	return (
 		<Stack spacing={2} direction='row'>
 			{/* Map Over Choices Options To Render Buttons With Different Attributes Depends On Choice */}

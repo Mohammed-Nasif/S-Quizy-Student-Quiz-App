@@ -60,6 +60,7 @@ const style = (theme: Theme) => ({
 	alignItems: 'center',
 });
 
+/* Score Modal Is An Extra Feature To The Application */
 function ScoreModal({ score }: any): JSX.Element {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => {
@@ -116,9 +117,9 @@ export default function RankModal({
 						You ranked Above <span style={{ fontWeight: 'bold' }}>{rank} % </span>of other students.
 					</p>
 					<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-						<ScoreModal score={score} /> {/* Score Screen */}
+						<ScoreModal score={score} /> {/* Score Screen - Extra Feature To The Application*/}
 						<ModalButton variant='outlined' size='small' color='primary' endIcon={<RefreshIcon />} onClick={handleRestartQuiz}>
-							Restart Quiz
+							Try Again
 						</ModalButton>
 					</div>
 				</Box>

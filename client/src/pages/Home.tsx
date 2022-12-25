@@ -34,6 +34,7 @@ const Home = (): JSX.Element => {
 	const [isQuizFinished, setIsQuizFinished] = useState<boolean>(false);
 	const [isAnswered, setIsAnswered] = useState<boolean>(false);
 	const [rank, setRank] = useState<number>(0);
+	
 	const { addAnswer } = useContext(ScoreDetailsContext) as ScoreDetailsContextType;
 
 	// Fetching The Api with words EndPoint To get The WordsList on Component Mount
@@ -85,19 +86,29 @@ const Home = (): JSX.Element => {
 
 	// Function To Handle The Data For The Next Upcoming Question
 	const handleNextQuestion = (): void => {
+
+		// Add The Current Answer To The ScoreDetailsContext To Be Used As Answers History
 		addAnswer({ questionWord: currentQuestion.word, studentAnswer: selectedChoice, isCorrectChoice: isCorrectChoice });
+
+		// Change The Index Of Question To Select The New Question
 		setQuestionCounter((prev) => prev - 1);
+
+		// Reset All The Previous States
 		setIsCorrectChoice(false);
 		setSelectedChoice('NA');
 		setIsAnswered(false);
+
+		// Set The New Question And The Progress According To The Condition
 		if (quizWords && questionsCounter > 0) {
 			setCurrentQuestion(quizWords[questionsCounter - 1]);
 			setProgress(((quizWords.length - questionsCounter + 1) / quizWords.length) * 100);
 		}
+
+		// If The Current Question Is The Last One ,, The Quiz Set As Finished
 		if (questionsCounter === 1) setIsQuizFinished(true);
 	};
 
-	// Function To Restart The Quiz After Finish
+	// Function To Restart The Quiz After Finish [Works On Try Again Button]
 	const handleRestartQuiz = (): void => {
 		window.location.reload();
 	};
@@ -108,6 +119,7 @@ const Home = (): JSX.Element => {
 				<div className='App-logo'>
 					<img src={Logo} alt='app-logo' />
 				</div>
+				{/* Practice Screen */}
 				<QuestionCard
 					progress={progress}
 					setSelectedChoice={setSelectedChoice}
@@ -120,6 +132,7 @@ const Home = (): JSX.Element => {
 					setIsAnswered={setIsAnswered}
 					isQuizFinished={isQuizFinished}
 				/>
+				{/* Rank Screen */}
 				<RankModal isQuizFinished={isQuizFinished} handleRestartQuiz={handleRestartQuiz} rank={rank} score={score} />
 			</header>
 		</div>

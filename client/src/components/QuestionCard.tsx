@@ -49,7 +49,7 @@ export const QuestionCard: FC<{
 		<Card sx={{ minWidth: 450, px: 1 }}>
 			<CardContent>
 
-				<ProgressBar progress={progress} sx={{ mb: 1.5 }} /> {/*Question Progress Bar*/}
+				<ProgressBar progress={progress} sx={{ mb: 1.5 }} /> {/*Questions Progress Bar*/}
 
 				<Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
 					Parts of Speech Quiz
