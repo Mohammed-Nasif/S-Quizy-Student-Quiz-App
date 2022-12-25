@@ -24,9 +24,11 @@
 
 To use this project, first clone the repo on your device using the command below:
 
-```git init```
+```git clone https://github.com/Mohammed-Nasif/S-Quizy-Student-Quiz-App.git```
 
-```git clone https://github.com/Mohammed-Nasif/S-Quizy-Student-Quiz-App-.git```
+OR 
+
+```Download It as Zip File and Then UnZip It on Your Local Machine```
 
 # Usage
 [Back To Top ⬆️](#table-of-contents)
