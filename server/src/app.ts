@@ -1,6 +1,7 @@
 const express = require('express');
+import { PORT, WORDS_NUMBERS, WORDS_ENDPOINT, RANK_ENDPOINT } from './constants';
 const app = express();
-const PORT = 8080;
+
 const { getWordsArray, getStudentRank } = require('./TestData_model');
 
 // Cors for cross origin allowance
@@ -13,7 +14,7 @@ app.use(cors());
 const bodyParser = require('body-parser');
 
 /* Middleware*/
-//configuring express to use body-parser as middle-ware.
+//Configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -27,12 +28,12 @@ app.get('/', (_req: any, res: { send: (arg0: string) => void }) => {
 });
 
 // Words EndPoint
-app.get('/words', (_req: any, res: { send: (arg0: any) => void }) => {
-	res.send(getWordsArray(10)); // You Can Change 10 To Any Required Number Of Words [It's 10 By Defalut In Model Function]
+app.get(WORDS_ENDPOINT, (_req: any, res: { send: (arg0: any) => void }) => {
+	res.send(getWordsArray(WORDS_NUMBERS)); // You Can Change 10 To Any Required Number Of Words [It's 10 By Defalut In Model Function]
 });
 
 // Rank EndPoint
-app.post('/rank', (req: { body: { score: any } }, res: { send: (arg0: any) => void }) => {
+app.post(RANK_ENDPOINT, (req: { body: { score: any } }, res: { send: (arg0: any) => void }) => {
 	const studentScore = req.body.score;
 	res.send(getStudentRank(studentScore));
 });
