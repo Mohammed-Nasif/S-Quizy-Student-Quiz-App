@@ -51,10 +51,11 @@ OR
 # Technologies
 [Back To Top ⬆️](#table-of-contents)
 
-- React Ts.
+- ReactJS.
 - Material UI.
-- Node Ts.
-- Express.
+- NodeJS.
+- ExpressJS.
+- TypeScript
 - Axios.
 - CSS.
 
